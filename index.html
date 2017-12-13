@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="xmltojson.js"></script>
+    </head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <div> 
+    <p>XML TO JSON: {{data}}</p>
+    </div>
+    
+<script> 
+    var app = angular.module('myApp', []); 
+    app.controller('myCtrl', function ($scope, $http) { 
+        $http.get("fakexml.xml", 
+                { 
+                    transformResponse: function (cnv) { 
+                        var x2js = new X2JS(); 
+                        var aftCnv = x2js.xml_str2json(cnv); 
+                        return aftCnv; 
+                    } 
+                }) 
+        .then(function (response) { 
+            console.log(response);
+            $scope.data = response.data;
+        },function()
+             {
+            console.log("error");
+        }); 
+    });     
+</script>
+
+</body>
+</html>
