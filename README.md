@@ -1,5 +1,5 @@
 # XML-TO-JSON
 XML-TO-JSON using AngularJS
 
-Convert XML to JSON on one Click
-BOOM.
+Convert XML to JSON in one Click
+BOOM!!!.
